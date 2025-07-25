@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Dearest Sis! 💖</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Confetti JS CDN for a fun effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <!-- Tone.js CDN for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Background Shapes (SVG for hearts and stars, cake, balloons) -->
+    <div class="floating-shape shape-heart-pink" data-parallax-speed="0.8">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-star-blue" data-parallax-speed="0.6">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-heart-rose" data-parallax-speed="0.7">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-star-light" data-parallax-speed="0.5">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-heart-dark" data-parallax-speed="0.9">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-star-dark" data-parallax-speed="0.75">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-cake" data-parallax-speed="0.65">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+            <path d="M12 4c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+            <path d="M12 19c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            <path d="M12 11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-balloon-1" data-parallax-speed="0.55">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            <path d="M12 11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+    </div>
+    <div class="floating-shape shape-balloon-2" data-parallax-speed="0.6">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            <path d="M12 11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+    </div>
+
+
+    <div class="birthday-card-container">
+        <div class="content-wrapper">
+            <h1 class="font-extrabold mb-6 leading-tight">
+                Happy Birthday, My Dearest <span class="text-pink-600">Paapu!</span> ✨💖
+            </h1>
+
+            <!-- Progress Indicator -->
+            <div class="text-sm text-gray-500 mb-4">
+                Memory <span id="currentMemoryNum">1</span> of <span id="totalMemoriesNum"></span>
+            </div>
+
+            <!-- Welcome Section -->
+            <div id="welcomeSection" class="memory-section active" data-bg-color="#fce7f3">
+                <h2 class="text-d81b60">Welcome to Your Memory Lane!</h2>
+                <p class="main-message text-gray-700 mb-8">
+                    Welcome to your personalized journey down memory lane! 🚀
+                    Get ready to revisit some of our most cherished moments together.
+                    Click 'Next Memory' to begin this beautiful compilation of joy and love! ❤️
+                </p>
+                <video controls autoplay loop muted playsinline
+                       class="max-w-full h-auto max-h-[250px] rounded-xl shadow-lg mb-4 border-3 border-fbcfe8"
+                       onerror="this.onerror=null;this.src='https://placehold.co/400x250/fbcfe8/be185d?text=Video+Error';"
+                >
+                    <source src="images/1.mp4" type="video/mp4">
+                    <!-- Add other video formats here for broader compatibility if available -->
+                    <!-- <source src="images/1.webm" type="video/webm"> -->
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Memory Section 1: Childhood Fun -->
+            <div id="memory1" class="memory-section" data-bg-color="#ffebee"> <!-- Light red/pink -->
+                <h2 class="text-d81b60">Childhood Adventures & Giggles</h2>
+                <p class="main-message text-gray-700 mb-8">
+                    Remember all our silly childhood adventures? From building forts to endless games,
+                    every moment was a precious byte of happiness. So many giggles and shared secrets
+                    from our early days! 👧👦
+                </p>
+                <img src="https://placehold.co/400x250/bfdbfe/2563eb?text=Early+Years+Fun"
+                     alt="Childhood Memories"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x250/bfdbfe/2563eb?text=Image+Error';"
+                >
+            </div>
+
+            <!-- Memory Section 2: Unforgettable Journeys -->
+            <div id="memory2" class="memory-section" data-bg-color="#e3f2fd"> <!-- Light blue -->
+                <h2 class="text-d81b60">Our Unforgettable Journeys Together</h2>
+                <p class="main-message text-gray-700 mb-8">
+                    From spontaneous road trips to navigating new cities, every adventure with you is a treasure.
+                    You're the best co-pilot on every journey, always making life exciting and full of discoveries! �✈️
+                </p>
+                <img src="https://placehold.co/400x250/fecaca/dc2626?text=Shared+Adventures"
+                     alt="Adventures Together"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x250/fecaca/dc2626?text=Image+Error';"
+                >
+            </div>
+
+            <!-- Memory Section 3: Celebrating Your Amazing Self -->
+            <div id="memory3" class="memory-section" data-bg-color="#ede7f6"> <!-- Light purple -->
+                <h2 class="text-d81b60">Celebrating Your Amazing Self</h2>
+                <p class="main-message text-gray-700 mb-8">
+                    Beyond the memories, it's your amazing qualities that shine brightest.
+                    Your kindness, strength, and brilliant mind are truly inspiring. You're a
+                    perfectly engineered human, inside and out, making the world a better place! ✨💡
+                </p>
+                <img src="https://placehold.co/400x250/d8b4fe/6d28d9?text=Your+Brilliance"
+                     alt="Your Amazing Self"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x250/d8b4fe/6d28d9?text=Image+Error';"
+                >
+            </div>
+
+            <!-- Final Message Section -->
+            <div id="finalMessageSection" class="memory-section" data-bg-color="#fce7f3"> <!-- Back to original pink -->
+                <h2 class="text-d81b60">Your Ultimate Birthday Wish!</h2>
+                <p class="main-message text-gray-700 mb-8">
+                    From your favorite engineer, I've run countless simulations, and the data consistently shows:
+                    you're the best sister anyone could ever wish for. Your laughter is the sweetest output,
+                    and your presence compiles into pure happiness. Wishing you a year filled with
+                    unlimited memory, boundless energy, and all the joy you can possibly process! 💖
+                </p>
+                <button
+                    id="revealFinalWishBtn"
+                    class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700
+                           text-white font-bold py-4 px-10 rounded-full shadow-xl transform transition-all
+                           duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4
+                           focus:ring-rose-300 focus:ring-opacity-75 text-lg tracking-wide"
+                >
+                    Reveal Your Ultimate Birthday Wish! 🎉
+                </button>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-center gap-4 mt-8">
+                <button
+                    id="prevBtn"
+                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-full
+                           shadow-md transition-all duration-300 ease-in-out hover:scale-105
+                           focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled
+                >
+                    Previous Memory ⬅️
+                </button>
+                <button
+                    id="nextBtn"
+                    class="bg-gradient-to-r from-blue-400 to-purple-500 hover:from-blue-500 hover:to-purple-600
+                           text-white font-bold py-2 px-6 rounded-full shadow-md transform transition-all
+                           duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4
+                           focus:ring-blue-300 focus:ring-opacity-75"
+                >
+                    Next Memory ➡️
+                </button>
+            </div>
+
+            <!-- Special Hidden Message (revealed by final button) -->
+            <div id="specialHiddenMessage" class="final-message">
+                <p class="text-gray-800">
+                    Love you to the moon and back! Happy Birthday once again! 🚀🌌
+                </p>
+            </div>
+
+            <p class="footer-message">
+                Designed with love (and a bit of code) by your favorite engineer. 💻❤️
+            </p>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+�

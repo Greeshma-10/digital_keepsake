@@ -1,0 +1,345 @@
+/* Custom font for a soft, friendly look */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fce7f3; /* Default very light pink/peach background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box; /* Ensure padding is included in total width */
+    position: relative; /* Needed for absolute positioning of shapes */
+    transition: background-color 0.8s ease-in-out; /* Smooth background color transition */
+}
+
+/* Keyframe for card entrance animation */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Keyframe for subtle text glow */
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 5px rgba(252, 231, 243, 0.5); }
+    50% { text-shadow: 0 0 15px rgba(252, 231, 243, 0.8); }
+}
+
+/* Keyframes for floating background shapes */
+@keyframes float {
+    0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    25% { transform: translateY(-15px) translateX(10px) rotate(5deg); }
+    50% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    75% { transform: translateY(15px) translateX(-10px) rotate(-5deg); }
+    100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+/* Keyframe for section transition */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+/* Utility class for hiding elements */
+.hidden {
+    display: none !important;
+}
+
+/* Main card container */
+.birthday-card-container {
+    background-color: #ffffff; /* White card background */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Deeper, softer shadow */
+    border-radius: 2.5rem; /* Even more rounded corners */
+    padding: 3.5rem; /* More generous padding */
+    text-align: center;
+    max-width: 95%; /* Max width for responsiveness */
+    width: 850px; /* Slightly wider for larger screens */
+    position: relative;
+    max-height: 90vh; /* Limit height to 90% of viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    
+    border: 3px solid #fbcfe8; /* Soft pink border */
+    animation: fadeInScale 1s ease-out forwards; /* Apply entrance animation */
+    z-index: 10; /* Ensure card is above background shapes */
+}
+
+/* Subtle background pattern/gradient with more depth */
+.birthday-card-container::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    right: -10%;
+    bottom: -10%;
+    background: radial-gradient(circle at top left, #fbcfe8 0%, transparent 40%),
+                        radial-gradient(circle at bottom right, #bfdbfe 0%, transparent 40%),
+                        radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    opacity: 0.4;
+    z-index: 0;
+    border-radius: 2.5rem;
+    transform: rotate(5deg); /* Slight rotation for dynamic feel */
+}
+.content-wrapper {
+    position: relative;
+    z-index: 1; /* Ensure content is above the background */
+}
+
+/* Enhanced heading style */
+h1 {
+    font-size: 3.5rem; /* Larger heading */
+    font-weight: 900; /* Extra bold */
+    color: #ec4899; /* Vibrant pink */
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    animation: textGlow 3s infinite alternate; /* Apply subtle glow */
+}
+h1 span {
+    color: #f06292; /* Slightly different pink for emphasis */
+}
+
+/* Main paragraph style */
+p.main-message {
+    font-size: 1.25rem; /* Larger text */
+    color: #4a5568; /* Darker gray for readability */
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+/* Memory section styles */
+.memory-section {
+    /* Initially hide all memory sections by default */
+    display: none; 
+    animation: slideInFromRight 0.8s ease-out forwards;
+    padding: 1rem;
+    min-height: 300px; /* Ensure consistent height */
+    flex-direction: column; /* Keep flex-direction for internal layout */
+    justify-content: center;
+    align-items: center;
+}
+/* Only the active section should be displayed as flex */
+.memory-section.active {
+    display: flex;
+}
+.memory-section.leaving {
+    animation: slideOutToLeft 0.8s ease-out forwards;
+}
+
+.memory-section h2 {
+    font-size: 2.25rem; /* Large subtitle */
+    font-weight: 800;
+    color: #d81b60; /* Darker pink for emphasis */
+    margin-bottom: 1.5rem;
+}
+
+.memory-section img {
+    max-width: 100%;
+    height: auto;
+    max-height: 250px; /* Limit image height */
+    object-fit: contain; /* Ensure image fits without cropping */
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    border: 3px solid #fbcfe8;
+}
+
+/* Style for the final message */
+.final-message {
+    display: none; /* Controlled by JS */
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background-color: #fff0f7; /* Lighter pink background for message */
+    border-left: 8px solid #ec4899; /* Vibrant pink border */
+    border-radius: 1.25rem;
+    font-style: italic;
+    color: #831843; /* Darker pink text */
+    line-height: 1.7;
+    text-align: left; /* Align message text left */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    animation: fadeInUp 0.8s ease-out forwards; /* Apply reveal animation */
+}
+
+/* Floating Background Shapes Styles */
+.floating-shape {
+    position: absolute;
+    z-index: -1; /* Behind the main content by default */
+    opacity: 0.3; /* Increased opacity for more visibility */
+    filter: blur(1px); /* Slightly less blur */
+    animation: float 15s infinite ease-in-out alternate;
+    /* Parallax effect - will be controlled by JS */
+    transition: transform 0.1s linear;
+}
+
+/* SVG specific styling for shapes */
+.floating-shape svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor; /* Use parent's color */
+}
+
+.shape-heart-pink {
+    width: 100px;
+    height: 100px;
+    color: #fbcfe8; /* Soft pink */
+    top: 10%;
+    left: 5%;
+    animation-duration: 12s; /* Vary animation speed */
+}
+
+.shape-star-blue {
+    width: 80px;
+    height: 80px;
+    color: #bfdbfe; /* Soft blue */
+    bottom: 15%;
+    right: 10%;
+    animation-duration: 18s;
+    animation-delay: -3s; /* Stagger animation start */
+}
+
+.shape-heart-rose {
+    width: 120px;
+    height: 120px;
+    color: #f06292; /* Rose pink */
+    top: 5%;
+    right: 15%;
+    animation-duration: 14s;
+    animation-delay: -1s;
+}
+
+.shape-star-light {
+    width: 70px;
+    height: 70px;
+    color: #fee2e2; /* Lighter red/pink */
+    bottom: 5%;
+    left: 20%;
+    animation-duration: 16s;
+    animation-delay: -5s;
+}
+
+.shape-heart-dark {
+    width: 90px;
+    height: 90px;
+    color: #ec4899; /* Vibrant pink */
+    top: 25%;
+    left: 40%;
+    animation-duration: 13s;
+    animation-delay: -2s;
+}
+
+.shape-star-dark {
+    width: 60px;
+    height: 60px;
+    color: #be185d; /* Darker pink */
+    bottom: 30%;
+    right: 40%;
+    animation-duration: 17s;
+    animation-delay: -4s;
+}
+
+/* Cake and Balloon specific styles */
+.shape-cake {
+    width: 180px;
+    height: 180px;
+    top: 60%;
+    left: 5%;
+    color: #fbcfe8; /* Light pink for cake base */
+    animation-duration: 20s;
+    animation-delay: -6s;
+    opacity: 0.4; /* Increased opacity */
+    filter: blur(0.5px); /* Less blur */
+}
+
+.shape-balloon-1 {
+    width: 80px;
+    height: 120px; /* Taller for balloon shape */
+    top: 5%;
+    left: 30%;
+    color: #bfdbfe; /* Light blue */
+    animation-duration: 10s;
+    animation-delay: -2s;
+    opacity: 0.4; /* Increased opacity */
+    filter: blur(0.5px);
+    transform-origin: bottom center; /* For realistic float */
+}
+
+.shape-balloon-2 {
+    width: 90px;
+    height: 130px;
+    bottom: 10%;
+    right: 25%;
+    color: #f06292; /* Rose pink */
+    animation-duration: 13s;
+    animation-delay: -4s;
+    opacity: 0.4; /* Increased opacity */
+    filter: blur(0.5px);
+    transform-origin: bottom center;
+}
+
+/* Footer style */
+.footer-message {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #a0aec0; /* Lighter gray */
+    font-style: italic;
+}
+
+/* Responsive adjustments for new shapes */
+@media (max-width: 1024px) {
+    .shape-cake { width: 150px; height: 150px; }
+    .shape-balloon-1 { width: 70px; height: 100px; }
+    .shape-balloon-2 { width: 80px; height: 110px; }
+    .floating-shape { opacity: 0.25; filter: blur(0.8px); }
+}
+
+@media (max-width: 768px) {
+    .birthday-card-container {
+        padding: 2.5rem;
+        border-radius: 2rem;
+        max-height: 85vh; /* Adjust max-height for smaller screens */
+    }
+    h1 { font-size: 2.5rem; }
+    p.main-message { font-size: 1rem; }
+    .memory-section h2 { font-size: 1.8rem; }
+    .memory-section img { max-height: 200px; }
+    .hidden-message { padding: 1.5rem; border-radius: 1rem; }
+    .floating-shape { display: none; } /* Hide shapes on smaller screens to avoid clutter */
+}
+
+@media (max-width: 480px) {
+    .birthday-card-container {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+        max-height: 80vh; /* Further adjust max-height for very small screens */
+    }
+    h1 { font-size: 2rem; }
+    p.main-message { font-size: 0.9rem; }
+    .memory-section h2 { font-size: 1.5rem; }
+    .memory-section img { max-height: 150px; }
+    .hidden-message { padding: 1rem; border-radius: 0.75rem; }
+}
