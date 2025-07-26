@@ -60,7 +60,7 @@
 
 2. **Navigate to the project directory:**
    ```bash
-   cd your-repo-name
+   cd digital_keepsake
    
 3. **Launch the app:**
    ```
